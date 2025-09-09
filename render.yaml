@@ -5,7 +5,7 @@ services:
     env: docker
     plan: free
     region: oregon
-    dockerfilePath: hapi/Dockerfile
+    dockerfilePath: Dockerfile
     autoDeploy: true
     healthCheckPath: /fhir/metadata
     envVars:
