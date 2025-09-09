@@ -11,3 +11,5 @@ services:
     envVars:
       - key: JAVA_OPTS
         value: -Xms512m -Xmx1024m
+      - key: PORT
+        value: 8080
