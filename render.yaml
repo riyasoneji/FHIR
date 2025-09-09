@@ -1,5 +1,4 @@
 services:
-  # 1) HAPI FHIR (Docker)
   - type: web
     name: hapi-fhir
     env: docker
@@ -9,7 +8,12 @@ services:
     autoDeploy: true
     healthCheckPath: /fhir/metadata
     envVars:
-      - key: JAVA_OPTS
-        value: -Xms512m -Xmx1024m
+      # Tell Render the expected internal port (helps its scanner)
       - key: PORT
+        value: 8080
+      # Keep in sync with Dockerfile JAVA_OPTS
+      - key: JAVA_OPTS
+        value: -Xms256m -Xmx512m -XX:+UseSerialGC
+      # Spring Boot will also see this
+      - key: SERVER_PORT
         value: 8080
