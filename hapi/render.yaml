@@ -1,0 +1,13 @@
+services:
+  # 1) HAPI FHIR (Docker)
+  - type: web
+    name: hapi-fhir
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: hapi/Dockerfile
+    autoDeploy: true
+    healthCheckPath: /fhir/metadata
+    envVars:
+      - key: JAVA_OPTS
+        value: -Xms512m -Xmx1024m
